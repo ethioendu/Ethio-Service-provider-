@@ -1,7 +1,5 @@
 
 ( function( global, factory ) {
-  // universal module definition
-  /* jshint strict: false */ /* globals define, module, window */
   if ( typeof define == 'function' && define.amd ) {
     // AMD - RequireJS
     define( 'ev-emitter/ev-emitter',factory );
@@ -72,7 +70,6 @@ proto.emitEvent = function( eventName, args ) {
   if ( !listeners || !listeners.length ) {
     return;
   }
-  // copy over to avoid interference if .off() in listener
   listeners = listeners.slice(0);
   args = args || [];
   // once stuff
@@ -104,16 +101,11 @@ return EvEmitter;
 
 }));
 
-/*!
- * imagesLoaded v4.1.4
- * JavaScript is all like "You images are done yet or what?"
- * MIT License
- */
+
 
 ( function( window, factory ) { 'use strict';
   // universal module definition
 
-  /*global define: false, module: false, require: false */
 
   if ( typeof define == 'function' && define.amd ) {
     // AMD
@@ -178,11 +170,7 @@ function makeArray( obj ) {
 
 // -------------------------- imagesLoaded -------------------------- //
 
-/**
- * @param {Array, Element, NodeList, String} elem
- * @param {Object or Function} options - if function, use as callback
- * @param {Function} onAlways - callback function
- */
+
 function ImagesLoaded( elem, options, onAlways ) {
   // coerce ImagesLoaded() without new, to be new ImagesLoaded()
   if ( !( this instanceof ImagesLoaded ) ) {
@@ -219,7 +207,6 @@ function ImagesLoaded( elem, options, onAlways ) {
     this.jqDeferred = new $.Deferred();
   }
 
-  // HACK check async to allow time to bind listeners
   setTimeout( this.check.bind( this ) );
 }
 
@@ -230,7 +217,6 @@ ImagesLoaded.prototype.options = {};
 ImagesLoaded.prototype.getImages = function() {
   this.images = [];
 
-  // filter & find items if we have an item selector
   this.elements.forEach( this.addElementImages, this );
 };
 
@@ -294,9 +280,7 @@ ImagesLoaded.prototype.addElementBackgroundImages = function( elem ) {
   }
 };
 
-/**
- * @param {Image} img
- */
+
 ImagesLoaded.prototype.addImage = function( img ) {
   var loadingImage = new LoadingImage( img );
   this.images.push( loadingImage );
